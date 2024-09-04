@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,12 +18,11 @@ import android.view.ViewGroup;
  */
 public class ForecastFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // Parameters for fragment initialization
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    // Variables to hold parameter values
     private String mParam1;
     private String mParam2;
 
@@ -36,7 +38,6 @@ public class ForecastFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment ForecastFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static ForecastFragment newInstance(String param1, String param2) {
         ForecastFragment fragment = new ForecastFragment();
         Bundle args = new Bundle();
@@ -58,9 +59,25 @@ public class ForecastFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View v = inflater.inflate(R.layout.fragment_forecast, container, false);
         v.setBackgroundColor(0x2000FF00);
+
+        LinearLayout layout = new LinearLayout(getActivity());
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        TextView textView = new TextView(getActivity());
+        textView.setText("Thursday");
+        textView.setTextSize(24);
+
+        ImageView imageView = new ImageView(getActivity());
+        imageView.setImageResource(R.drawable.baseline_brightness_low_24);
+
+        layout.addView(textView);
+        layout.addView(imageView);
+
+        ((ViewGroup) v).addView(layout);
+
         return v;
     }
 }

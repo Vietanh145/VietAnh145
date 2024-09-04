@@ -24,7 +24,7 @@ public class WeatherActivity extends AppCompatActivity {
         // Add the fragment to the 'container' FrameLayout
         getSupportFragmentManager().beginTransaction().add(R.id.main, firstFragment).commit();// container => main
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_weather);
 
         Log.i("Weather", "onCreate Call");
     }

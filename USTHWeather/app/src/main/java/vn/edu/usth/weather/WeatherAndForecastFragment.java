@@ -3,30 +3,30 @@ package vn.edu.usth.weather;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ForecastFragment#newInstance} factory method to
+ * Use the {@link WeatherAndForecastFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ForecastFragment extends Fragment {
+public class WeatherAndForecastFragment extends Fragment {
 
-    // Parameters for fragment initialization
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // Variables to hold parameter values
+    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public ForecastFragment() {
+    public WeatherAndForecastFragment() {
         // Required empty public constructor
     }
 
@@ -36,10 +36,11 @@ public class ForecastFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ForecastFragment.
+     * @return A new instance of fragment WeatherAndForecastFragment.
      */
-    public static ForecastFragment newInstance(String param1, String param2) {
-        ForecastFragment fragment = new ForecastFragment();
+    // TODO: Rename and change types and number of parameters
+    public static WeatherAndForecastFragment newInstance(String param1, String param2) {
+        WeatherAndForecastFragment fragment = new WeatherAndForecastFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -56,28 +57,22 @@ public class ForecastFragment extends Fragment {
         }
     }
 
+    public static WeatherAndForecastFragment newInstance() {
+        return new WeatherAndForecastFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_weather_and_forecast, container, false);
 
-        View v = inflater.inflate(R.layout.fragment_forecast, container, false);
-        v.setBackgroundColor(0x2000FF00);
 
-        LinearLayout layout = new LinearLayout(getActivity());
-        layout.setOrientation(LinearLayout.VERTICAL);
+        FragmentManager fm = getChildFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.weatherFragment, new WeatherFragment());
+        transaction.replace(R.id.forecastFragment, new ForecastFragment());
+        transaction.commit();
 
-        //TextView textView = new TextView(getActivity());
-        //textView.setText("Thursday");
-        //textView.setTextSize(24);
-
-        //ImageView imageView = new ImageView(getActivity());
-        //imageView.setImageResource(R.drawable.baseline_brightness_low_24);
-
-        //layout.addView(textView);
-        //layout.addView(imageView);
-
-        ((ViewGroup) v).addView(layout);
-
-        return v;
+        return view;
     }
 }

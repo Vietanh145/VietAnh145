@@ -31,7 +31,10 @@ public class WeatherActivity extends AppCompatActivity {
         //ForecastFragment firstFragment = new ForecastFragment();
         // Add the fragment to the 'container' FrameLayout
         //getSupportFragmentManager().beginTransaction().add(R.id.main, firstFragment).commit();// container => main
+        // Set locale to Vietnamese
+        LocalHelper.setLocale(this, "vi");
 
+        // Initialize ViewBinding
         setContentView(R.layout.activity_weather);
 
         ActivityWeatherBinding binding = ActivityWeatherBinding.inflate(getLayoutInflater());

@@ -52,7 +52,5 @@
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/cloudy1" />
 
-
-
         </RelativeLayout>
 </FrameLayout>
